@@ -23,6 +23,21 @@ export function sumToN(n) {
  */
 export function factorial(n) {
   // TODO
+  if (typeof n !== "number") {
+    return NaN;
+  }
+if (n < 0) {
+  return undefined;
+}
+
+if (n === 0) {
+  return 1;
+}
+let product = 1;
+for (let i = 1; i <= n; i++) {
+  product *= i;
+}
+return product;
 }
 
 /**
@@ -33,6 +48,15 @@ export function factorial(n) {
  */
 export function buildNArray(n) {
   // TODO
+  
+  if (typeof n !== "number") return null;
+
+  if ( n <= 0) 
+    return [];
+  const array = [];
+  for(let i = 1; i <= n; i++){
+    array.push(i);}
+return array;
 }
 
 /**
@@ -41,6 +65,14 @@ export function buildNArray(n) {
  */
 export function getLongestString(strings) {
   // TODO
+  if (!Array.isArray(strings)) return '';
+let longest = '';
+  for(let i = 0; i < strings.length; i++) {
+ if (strings[i].length > longest.length) {
+  longest = strings[i];
+ }
+  }
+return longest;
 }
 
 /**
@@ -49,7 +81,19 @@ export function getLongestString(strings) {
  */
 export function countPresent(attendance) {
   // TODO
-}
+  const present = Boolean(true);
+  const absent = Boolean(false);
+let studentCount = 0;
+ for (let i = 0; i < attendance.length; i++){
+  if (attendance[i]) {
+    studentCount++;
+  }
+  } 
+  return studentCount
+ }
+
+
+
 
 /**
  * In DNA strings, the symbols `A` and `T` are complements of each other,
@@ -63,4 +107,9 @@ export function countPresent(attendance) {
  */
 export function complementDNA(dna) {
   // TODO
+  if(typeof dna !== "string") return null;
+
+  const symbols = { A: "T", T: "A", C: "G", G: "C" };
+  return dna.split("").map(letter => symbols[letter]).join("");
+ 
 }
